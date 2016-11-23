@@ -10,6 +10,8 @@ def bingo(request):
     try:
         card = Card.objects.get(session=request.session.session_key)
     except Card.DoesNotExist:
+        if not request.session.session_key:
+            request.session.create()
         card = Game.objects.first().generate_card(request.session.session_key)
     return render(request, 'bingo.html', {'terms': card.terms.all().order_by('index')})
 

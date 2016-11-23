@@ -25,7 +25,7 @@ SECRET_KEY = '_mw7%gbfg$%i1=4kmbpv=et#-aa44q@4=4@nyn)8*1nsw31ua1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['138.197.25.161', 'localhost']
 
 
 # Application definition
@@ -118,9 +118,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    '/var/www/static/',
-]
+STATICFILES_DIRS = []
+
+STATIC_ROOT = '/var/www/bingo/static/'
 
 STATIC_URL = '/static/'

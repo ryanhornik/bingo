@@ -13,11 +13,11 @@ table, th, td {
 }
 
 tr {
-    height: 15vh;
+    height: 20vmin;
 }
 
 td {
-    width: 15vw;
+    width: 20vmin;
 }
 
 td p {

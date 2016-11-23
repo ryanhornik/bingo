@@ -1,0 +1,33 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 150%;
+}
+
+table, th, td {
+   border: 1px solid black;
+}
+
+tr {
+    height: 15vh;
+}
+
+td {
+    width: 15vw;
+}
+
+td p {
+    margin: 20px;
+}
+
+td {
+    background-color: white;
+}
+
+td.selected {
+    background-color: #f66;
+}

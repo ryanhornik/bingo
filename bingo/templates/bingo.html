@@ -1,0 +1,46 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}" media="screen" title="no title">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<table>
+    <tbody>
+{% for t in terms %}
+    {% if forloop.counter0|divisibleby:5 %}
+    {% if forloop.counter0 != 0 %}
+    </tr>
+    {% endif %}
+    <tr>
+    {% endif %}
+    <td id="{{ t.pk }}" class="{% if t.checked %}selected{% endif %}"{% if forloop.counter0 == 12 %}style="color:red;"{% endif %}><p>{{ t.term.text }}</p></td>
+{% endfor %}
+</tr>
+</tbody>
+</table>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('td').click(function() {
+        var id = this.id
+        var term = $('#'+id);
+
+        if (term.hasClass('selected')) {
+            term.removeClass('selected');
+        } else {
+            term.addClass('selected');
+        }
+
+        $.post("{% url 'toggle' %}", 'id='+id, function(data) {});
+    });
+});
+</script>
+
+</body>
+</html>

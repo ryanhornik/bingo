@@ -31,3 +31,17 @@ td {
 td.selected {
     background-color: #f66;
 }
+
+.button {
+    background-color: #b22;
+    color: #e6e6e6;
+    border: #333 solid 2px;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 10px;
+    text-decoration: none;
+}
+
+.button:active, .button:focus {
+    background-color: #a22;
+}

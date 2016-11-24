@@ -4,11 +4,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Bingo</title>
     <link rel="stylesheet" href="{% static 'main.css' %}" media="screen" title="no title">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 </head>
 <body>
+
+<h2>2016 Thanksgiving Family Argument Bingo</h2>
 
 <table>
     <tbody>
@@ -25,6 +27,12 @@
 </tbody>
 </table>
 
+<p>Bingo cards are randomly generated the first time you visit the page. To get a new bingo card click the button below</p>
+
+<a id="reset_btn" href="{% url 'reset' %}" class="button">
+    New BINGO card
+</a>
+
 <script type="text/javascript">
 $(document).ready(function() {
     $('td').click(function() {
@@ -38,6 +46,10 @@ $(document).ready(function() {
         }
 
         $.post("{% url 'toggle' %}", 'id='+id, function(data) {});
+    });
+
+    $('#reset_btn').click(function () {
+        return window.confirm("Are you sure?");
     });
 });
 </script>

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from bingo.models import Card, Game, OrderedTerm
 from django.http import HttpResponse
 from django.contrib.sessions.models import Session
@@ -14,6 +14,16 @@ def bingo(request):
             request.session.create()
         card = Game.objects.first().generate_card(request.session.session_key)
     return render(request, 'bingo.html', {'terms': card.terms.all().order_by('index')})
+
+
+def reset(request):
+    try:
+        card = Card.objects.get(session=request.session.session_key)
+    except Card.DoesNotExist:
+        pass
+    else:
+        card.delete()
+    return redirect('bingo')
 
 
 @csrf_exempt
